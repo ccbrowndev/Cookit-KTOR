@@ -23,10 +23,12 @@ A fork of the Cookit! app being built to use KTOR and kotlinx serialization.
 ## Credits
 
 ### Original Concept
-Zilong Chen
+[Zilong Chen](https://github.com/ZLongC)
 
 ### Original App Developed By
-Zilong Chen, Chris Brown, Lilly Schott, Kerry Healey
+[Zilong Chen](https://github.com/ZLongC), [Chris Brown](https://github.com/ccbrowndev), [Lilly Schott](schottlw), [Kerry Healey](healeyke)
 
 with input from
-Cassandra Meyer
+[Cassandra Meyer](meyer2c9)
+
+and contributions from classmates at time of development
