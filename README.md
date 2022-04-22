@@ -26,7 +26,7 @@ A fork of the Cookit! app being built to use KTOR and kotlinx serialization.
 [Zilong Chen](https://github.com/ZLongC)
 
 ### Original App Developed By
-[Zilong Chen](https://github.com/ZLongC), [Chris Brown](https://github.com/ccbrowndev), [Lilly Schott](schottlw), [Kerry Healey](healeyke)
+[Zilong Chen](https://github.com/ZLongC), [Chris Brown](https://github.com/ccbrowndev), [Lilly Schott](https://github.com/schottlw), [Kerry Healey](https://github.com/healeyke)
 
 with input from
 [Cassandra Meyer](meyer2c9)
