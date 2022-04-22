@@ -27,5 +27,6 @@ Zilong Chen
 
 ### Original App Developed By
 Zilong Chen, Chris Brown, Lilly Schott, Kerry Healey
-with assistance from
+
+with input from
 Cassandra Meyer
