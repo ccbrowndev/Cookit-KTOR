@@ -4,7 +4,7 @@
 
 ## Introduction
 
-A fork of the Cookit! app being built to use ktor and kotlinx serialization.
+A fork of the Cookit! app being built to use KTOR and kotlinx serialization.
 
 ### Some current features of the app
 
@@ -26,4 +26,6 @@ A fork of the Cookit! app being built to use ktor and kotlinx serialization.
 Zilong Chen
 
 ### Original App Developed By
-Kerry Healey, Lilly Schott, Chris Brown, Zilong Chen
+Zilong Chen, Chris Brown, Lilly Schott, Kerry Healey
+with assistance from
+Cassandra Meyer
