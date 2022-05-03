@@ -4,7 +4,7 @@
 
 ## Introduction
 
-A fork of the Cookit! app being built to use KTOR and kotlinx serialization.
+A fork of the Cookit! app being built to use KTOR.
 
 ### Some current features of the app
 
@@ -14,7 +14,7 @@ A fork of the Cookit! app being built to use KTOR and kotlinx serialization.
 * Users can store images of meals or the process of cooking them.
   * Uses a combination of Firestore and Storage
 
-### Possible changes beyond KTOR and kotlinx serialization
+### Possible changes beyond KTOR
 
 * Implement a different solution for user recipe storage
 * TODO
