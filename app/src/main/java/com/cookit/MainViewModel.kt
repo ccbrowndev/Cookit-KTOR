@@ -13,7 +13,7 @@ import com.cookit.dto.Photo
 import com.cookit.dto.Recipe
 import com.cookit.dto.User
 import com.cookit.service.IRecipeService
-import com.cookit.service.RecipeService
+import com.cookit.service.KtorRecipeService
 import com.cookit.service.TextFieldIngredientMapService
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
@@ -24,14 +24,14 @@ import kotlinx.coroutines.launch
  * Class for the primary view model
  * Used to supply [MutableLiveData] to views
  */
-class MainViewModel(var recipeService: IRecipeService = RecipeService()) : ViewModel() {
+class MainViewModel(var recipeService: IRecipeService = KtorRecipeService()) : ViewModel() {
 
     val photos: ArrayList<Photo> = ArrayList()
     var user: User? = null
+    val NEW_RECIPE = "New Recipe"
     val recipes: MutableLiveData<ArrayList<Recipe>> = MutableLiveData<ArrayList<Recipe>>()
     val userRecipes: MutableLiveData<ArrayList<Recipe>> = MutableLiveData<ArrayList<Recipe>>()
     var selectedRecipe by mutableStateOf(Recipe())
-    val NEW_RECIPE = "New Recipe"
     val ingredientMapper = TextFieldIngredientMapService()
 
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -100,7 +100,7 @@ class MainViewModel(var recipeService: IRecipeService = RecipeService()) : ViewM
 
     private fun uploadPhotos() {
         photos.forEach { photo ->
-            var uri = Uri.parse(photo.localUri)
+            val uri = Uri.parse(photo.localUri)
             val imageRef = storageReference.child("images/${user?.uid}/${uri.lastPathSegment}")
             val uploadTask = imageRef.putFile(uri)
             uploadTask.addOnSuccessListener {

@@ -1,130 +1,34 @@
-# Cookit!
+# Cookit! KTOR
 
 ---
 
-## Design Document  
+## Introduction
 
-Kerry Healey, Lilly Schott, Christopher Brown, Zilong Chen
+A fork of the Cookit! app being built to use KTOR.
 
-## Introduction 
-Have you ever wanted to eat a more balanced diet and don't know what to make?  
+### Some current features of the app
 
-Cookit! can help you:
--  Find and create recipes based on your desired nutritional value, cuisine, time, or cooking method
--  Suggest recipes based off your previous meal choices
--  Curate a list of ingredients to add to your next grocery trip
+* Search for recipes pulled from [TheMealDB API](https://www.themealdb.com/api.php)
+* Users can store their own recipes privately.
+  * Uses Google's Firebase Firestore
+* Users can store images of meals or the process of cooking them.
+  * Uses a combination of Firestore and Storage
 
-Use your mobile device to find your next balanced meal.  Search and filter within the interface to find a recipe that best fits your individualized needs.
-Receive unique notifications of recipes we think you should try.
+### Possible changes beyond KTOR
 
-We are using [TheMealDB API](https://www.themealdb.com/api.php) to pull recipe data.
-
-## Storyboard
-
-![Storyboard](Storyboard.png)
+* Implement a different solution for user recipe storage
+* TODO
 
 
-## Functional Requirements
+## Credits
 
-### Requirement 100.0: Search for Recipes
+### Original Concept
+[Zilong Chen](https://github.com/ZLongC)
 
-#### Scenario
+### Original App Developed By
+[Zilong Chen](https://github.com/ZLongC), [Chris Brown](https://github.com/ccbrowndev), [Lilly Schott](https://github.com/schottlw), [Kerry Healey](https://github.com/healeyke)
 
-As a user interested in cooking, I want to be able to search for recipes based on cuisine, cooking method, or nutrition so that I can cook tasty, nutritious meals.
+with input from
+[Cassandra Meyer](meyer2c9)
 
-#### Dependencies
-
-Recipe data are available and accessible.
-
-#### Assumptions
-
-Recipe names are in English.
-
-#### Examples
-1.1  
-**Given** a feed of recipe data is available\
-**When** I search for "Japanese"\
-**Then** I should receive at least one result with the following attribute:\
-Cuisine: Japanese
-
-
-1.2  
-**Given** a feed of recipe data is available\
-**When** I search for "baking"\
-**Then** I should receive at least one result with the following attribute:\
-Cooking Method: Baking
-
-1.3  
-**Given** a feed of recipe data is available\
-**When** I search for "high protein"\
-**Then** I should receive at least one result with the following attribute:\
-Nutrition: High Protein\
-and I should receive at least one result with the attributes:\
-Nutrition: High Protein\
-Vegan Friendly: Yes
-
-### Requirement 101 Store a Recipe
-
-#### Scenario
-
-As a user interested in cooking, I want to be able to save my personal recipes, including photos, so that I can refine my repices over time.
-
-#### Dependencies
-
-Recipe search data are available and accessible.
-The device has a camera and the user has granted camera permissions.
-
-#### Assumptions  
-
-Recipe names are in English.
-
-#### Examples  
-
-2.1
-**Given** a feed of recipe data is available\
-**Given** camera is available\
-**When**\
-Select: "Add new recipe"\
-Enter:\
-Name: Tonkotsu Ramen\
-Cuisine: Japanese\
-Cooking Method: Boiling\
-Nutrition: High Carbs, High Fat, High Protein\
-Add photos: *placeholder for image?*\
-Tap Save Icon\
-**Then**  the new entry for "Tonkotsu Ramen" should be displayed 
-
-2.2
-**Given** a feed of recipe data is available\
-**When**\
-Select: "Add new recipe"\
-Enter: no data is entered\
-Tap save icon\
-**Then** an error dialog appears showing no data was entered.
-
-## Class Diagram
-![Cookit!Diagram drawio](Cookit!Diagram.drawio.png)
-
-### Class Diagram Description
-**MainActivity:** This is the first screen the user will see. There will be a list of dishes from each style and also a an option to enter a new dish/search for a dish. 
-
-**ViewModel:** Shows recipe for the dish, how long it will take to cook, spice level, etc.
-
-**RetrofitClientInstance:** Bootstrap class require for Retrofit.
-
-**Cuisine:** Noun class that represents each dish.
-
-**Recipe:** Noun class that represents the recipes for the dishes. 
-
-**CuisineDAO:** Interface for Retrofit to find and parse Cuisine to JSON.
-
-**RecipeDAO:** Interface for Room to store Recipe data.
-
-## Scrum Roles
-
-- DevOps/Product Owner/Scrum Master: Kerry Healey
-- Frontend Developer: Lilly Schott, Zilong Chen
-- Integration Developer: Christopher Brown
-
-## Weekly Meeting
-After class on Tuesdays via Teams (and Thursdays if needed)
+and contributions from classmates at time of development
