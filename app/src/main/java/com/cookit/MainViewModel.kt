@@ -13,7 +13,6 @@ import com.cookit.dto.Photo
 import com.cookit.dto.Recipe
 import com.cookit.dto.User
 import com.cookit.service.IRecipeService
-import com.cookit.service.KtorRecipeService
 import com.cookit.service.TextFieldIngredientMapService
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
@@ -24,12 +23,12 @@ import kotlinx.coroutines.launch
  * Class for the primary view model
  * Used to supply [MutableLiveData] to views
  */
-class MainViewModel(var recipeService: IRecipeService = KtorRecipeService()) : ViewModel() {
+class MainViewModel(var recipeService: IRecipeService) : ViewModel() {
 
     val photos: ArrayList<Photo> = ArrayList()
     var user: User? = null
     val NEW_RECIPE = "New Recipe"
-    val recipes: MutableLiveData<ArrayList<Recipe>> = MutableLiveData<ArrayList<Recipe>>()
+    val recipes = recipeService.getRecipeDAO().getAllRecipes()
     val userRecipes: MutableLiveData<ArrayList<Recipe>> = MutableLiveData<ArrayList<Recipe>>()
     var selectedRecipe by mutableStateOf(Recipe())
     val ingredientMapper = TextFieldIngredientMapService()
@@ -70,9 +69,7 @@ class MainViewModel(var recipeService: IRecipeService = KtorRecipeService()) : V
 
     internal fun fetchRecipes() {
         viewModelScope.launch {
-            val innerRecipeList = recipeService.fetchRecipes()
-            val innerRecipes: ArrayList<Recipe> = innerRecipeList?.recipes ?: ArrayList()
-            recipes.postValue(innerRecipes)
+            recipeService.fetchRecipes()
         }
     }
 
@@ -176,7 +173,6 @@ class MainViewModel(var recipeService: IRecipeService = KtorRecipeService()) : V
                 }
                 else -> return listOf()
             }
-        }
-        return listOf()
+        } ?: return listOf()
     }
 }
