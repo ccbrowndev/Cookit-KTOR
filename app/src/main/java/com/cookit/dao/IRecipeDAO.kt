@@ -1,18 +1,16 @@
 package com.cookit.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.cookit.dto.Recipe
 
 @Dao
 interface IRecipeDAO {
     @Query("SELECT * FROM recipe")
-    fun getAllRecipes(): List<Recipe>
+    fun getAllRecipes(): LiveData<List<Recipe>>
 
-    @Insert
-    fun insertAll(vararg recipes: Recipe)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(recipes: ArrayList<Recipe>)
 
     @Delete
     fun delete(recipe: Recipe)

@@ -1,16 +1,29 @@
 package com.cookit
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.cookit.dto.RecipeList
 import com.cookit.service.KtorRecipeService
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
+
 
 class RecipeIntegrationTest {
+
+    @Mock
+    private lateinit var application: Application
+
+    @Before
+    fun init() {
+        MockitoAnnotations.initMocks(this)
+    }
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
@@ -35,7 +48,7 @@ class RecipeIntegrationTest {
 
 
     private fun givenRecipeServiceIsInitialized() {
-        recipeService = KtorRecipeService()
+        recipeService = KtorRecipeService(application)
     }
 
     private suspend fun whenRecipeDataIsParsed() {
